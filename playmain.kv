@@ -1,0 +1,272 @@
+PManager:
+    MainWindow:
+    AWindow:
+    SignupWindow:
+    SecondMainWindow:
+
+<ImLabel@Label>:
+    font_size:'20sp'
+    size_hint:1,0.7
+    halign:'center'
+    valign:'middle'
+    text_size:self.size
+
+<ImTextInput@TextInput>:
+    multiline:False
+    font_size:'20sp'
+    padding:[10,0,10,0]            
+
+
+
+<MainWindow>:
+    name:'main'
+    
+    email:email
+    password:password
+
+    GridLayout:
+        rows:4
+        
+
+        AnchorLayout:
+            anchor_y:'top'
+            size_hint:1,0.4
+            Label:
+                text:'KJCOEMR'
+                font_size:'35sp'
+        GridLayout:
+            cols:1
+            padding:[50,30,50,10]
+            BoxLayout:
+                orientation:'vertical'
+                ImLabel:
+                    text:'Email'
+                ImTextInput:
+                    id:email
+                    focus:True  
+            BoxLayout:
+                orientation:'vertical'
+                ImLabel:
+                    text:'PASSWORD'
+            
+                ImTextInput:
+                    id:password
+                    multiline:False
+                    password: True
+        BoxLayout:
+            
+            padding:[30,50,30,0]
+            Button:
+                text:"Login"
+                font_size:'25sp'
+                on_release:
+                    root.login()
+                    root.manager.transition.direction = "left"
+
+            Button:
+                text:"Sign Up"
+                font_size:'25sp'
+                on_release:
+                    app.root.current = "signup"            
+                    root.manager.transition.direction = "right"
+        
+        BoxLayout:
+            
+            padding:[30,0,30,40]
+            Button:
+                text:"Exit"
+                font_size:'25sp'
+                on_release:
+                    app.on_close()
+                    root.manager.transition.direction = "right"
+            
+
+
+<AWindow>:
+    name:'awindow'
+
+    namee:name
+    contact:contact
+    email:email
+    usernamee:username
+    password:passm
+    created:created
+
+    GridLayout:
+        rows:3
+        padding:[50,30,50,10]
+        
+        
+        Label:
+            text:"About"
+            size_hint:1,0.1
+            font_size:'30sp'
+        
+        BoxLayout:
+            orientation:'vertical'
+            Label:
+                id:name
+                text:'Name : '
+            Label:
+                id:contact
+                text:'Contact No :'
+            Label:
+                id:email
+                text:'email : '
+            Label:
+                id:username
+                text:'user_name : '
+            Label:
+                id:passm
+                text:'password : '
+            Label:
+                id:created  
+                text:'Created : '
+
+
+        Button:
+            text:'Go Back !'
+            size_hint:1,0.15
+            on_release:
+                app.root.current ='secondmain'    
+                root.manager.transition.direction='down'
+
+
+
+
+    
+<SignupWindow>:
+    name:'signup'
+    namee:namee
+    contact:contact
+    email:email
+    username:user_name
+    password:passw
+
+
+    GridLayout:
+        rows:3
+
+        
+        Label:
+            text:'Registration'
+            size_hint:1,0.2
+            font_size:'20sp'
+        
+        GridLayout:
+            
+            
+            cols:2
+
+            padding:[10,0,10,10]
+            Label:
+                text:'Name'
+            TextInput:
+                id:namee
+                multiline:False
+            Label:
+                text:'Contact Number'
+            TextInput:
+                id:contact 
+                multiline:False
+                input_type:'number'
+                input_filter:'int'
+            Label:
+                text:'Email'
+            TextInput:
+                id:email 
+                multiline:False
+            Label:
+                text:'User Name'
+            TextInput:
+                id:user_name
+                multiline:False
+            Label:
+                text:'Password'
+            TextInput:
+                id:passw 
+                multiline:False
+
+        BoxLayout:
+            orientation:'horizontal'
+            padding:[10,10,10,30]
+            size_hint:1,.4
+            Button:
+                text:'Submit'
+                on_release:
+                    root.submit()
+                    
+            Button:
+                text:'Back'
+                on_release:
+                    app.root.current = "main"
+                    root.manager.transition.direction = "left"
+            
+
+<SecondMainWindow>:
+    name:'secondmain'
+
+    username:username
+
+    GridLayout:
+        rows:3
+        
+        Label:
+            id:username
+            size_hint:1,0.2
+            text:"user_name : "
+
+        BoxLayout:
+            orientation:'vertical'
+            padding:[20,0,20,0]
+            Button:
+                text:'1'
+            Button:
+                text:'2'
+            Button:
+                text:'about'
+                on_release:
+                    app.root.current = "awindow"
+                    root.manager.transition.direction = "up"
+            
+        BoxLayout:
+            orientation:'vertical'
+            padding:[10,10,10,30]
+            size_hint:1,0.3
+            Button:
+                text:"Log Out"
+                size_hint:1,0.3
+                on_release:
+                    app.root.current = "main"
+                    root.manager.transition.direction = "right"
+
+    
+
+
+
+
+    
+<Loginerror>:
+    Label:
+        text:"Enter Valid Name and password "
+        size_hint:0.6,0.2
+        pos_hint:{"x":0.2,"top":1}
+    Button:
+        text:"OK "
+        size_hint:0.8,0.2
+        pos_hint:{"x":0.1,"y":0.1}
+        on_release:
+            
+                
+            
+
+<Invalidform>:
+    Label:
+        text:"Fill all data with valid information. "
+        size_hint:0.6,0.2
+        pos_hint:{"x":0.2,"top":1}
+    Button:
+        text:"OK "
+        size_hint:0.8,0.2
+        pos_hint:{"x":0.1,"y":0.1}
+        on_release:
